@@ -44,7 +44,6 @@ public class MovieDbImportService {
         return ids.stream()
            .map(id -> findOrSaveMovie(id))
            .map(movie -> fetchTmdbMovie(movie, getCast))
-           .filter(m -> m != null)
            .collect(Collectors.toList());
     }
 
@@ -58,7 +57,6 @@ public class MovieDbImportService {
 
     @Transactional
     public Movie fetchTmdbMovie(Movie outMovie, boolean getCast) {
-        Optional<Movie> m;
         try {
             MovieDb tmdbMovie = movieDbApi.getMovieInfo(outMovie.getTmdbId().intValue(), "en");
             outMovie.setHomepage(tmdbMovie.getHomepage());
@@ -74,6 +72,6 @@ public class MovieDbImportService {
         } catch (MovieDbException movieEx) {
             LOGGER.error("Excception while fetching movie: {}", outMovie, movieEx);
         }
-        return null;
+        return outMovie;
     }
 }

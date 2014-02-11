@@ -1,0 +1,12 @@
+def String[] modules = [
+	"data",
+	"web"
+]
+
+include modules
+
+modules.each { name ->
+	def p = findProject(":${name}")
+	p.name = "isharelib-${name}"
+	p.buildFileName = "${name}.gradle"
+}

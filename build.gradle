@@ -1,0 +1,86 @@
+allprojects {
+	ext.gradleDir = "${rootDir}/gradle"
+	apply plugin: 'java'
+	apply plugin: 'idea'
+
+	apply from: "${gradleDir}/dependencies.gradle"
+
+	group = 'com.chriswk.isharelib'
+	sourceCompatibility = "${javaVersion}"
+	targetCompatibility = "${javaVersion}"
+
+	repositories {
+		mavenCentral()
+		mavenLocal()
+		maven {
+			name "springsource release"
+			url "http://repo.springsource.org/libs-release"
+		}
+		maven {
+			name "springsource snapshot"
+			url "http://repo.springsource.org/libs-snapshot"
+		}
+		maven {
+			name "neo4j release"
+			url "http://m2.neo4j.org"
+		}
+		maven {
+			name "neo4j snapshots"
+			url "http://m2.neo4j.org/snapshots"
+		}
+	}
+
+	tasks.withType(Compile) {
+		options.encoding = 'UTF-8'
+	}
+
+	dependencies {
+		libs.logbackLogging
+	}
+}
+
+configure(subprojects) {subproject -> 
+	apply from: "${rootProject.gradleDir}/publish-maven.gradle"
+	apply from: "${rootProject.gradleDir}/exclusions.gradle"
+	jar {
+		manifest.attributes['Implementation-Title'] = subproject.name
+		manifest.attributes['Implementation-Version'] = subproject.version
+
+		from("${rootProject}/src/dist") {
+			include "license.txt"
+			include "version.txt"
+			into "META-INF"
+			expand(copyright: new Date().format("yyyy"), version: project.version, owner: "@chriswk")
+		}
+	}
+
+	javadoc {
+		options.memberLevel = org.gradle.external.javadoc.JavadocMemberLevel.PROTECTED
+		options.header = project.name
+	}
+
+	task sourcesJar(type: Jar, dependsOn: classes) {
+		classifier = 'sources'
+		from sourceSets.main.allJava
+	}
+
+	task testJar(type: Jar, dependsOn: classes) {
+		classifier = 'tests'
+		from sourceSets.test.allJava
+	}
+
+	artifacts {
+		archives sourcesJar
+		archives javadocJar
+	}
+
+	tasks.withType(Zip) { task ->
+		task.doLast {
+			ant.checksum file: it.archivePath
+		}
+	}
+}
+
+task wrapper(type: Wrapper, description: "Builds wrapper for ${gradle.version}") {
+	gradleVersion = "${gradle.version}"
+}

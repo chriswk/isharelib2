@@ -1,0 +1,28 @@
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+# Gradle ignores #
+.gradle
+.gradletasknamecache
+build
+classes
+target
+test-data
+
+# Idea Ignores #
+*.iml
+*.ipr
+*.iws
+.idea
+out
+log
+
+# Eclipse ignores #
+.classpath
+.project
+.settings
+.nb-gradle-properties

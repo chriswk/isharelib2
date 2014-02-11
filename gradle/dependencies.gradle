@@ -1,0 +1,20 @@
+ext.libs = [:]
+
+ext.libs.spring = [
+	aop: "org.springframework:spring-aop:${springVersion}",
+	aspects: "org.springframework:spring-aspects:${springVersion}",
+	context: "org.springframework:spring-context:${springVersion}",
+	core: "org.springframework:spring-core:${springVersion}",
+	jdbc: "org.springframework:spring-jdbc:${springVersion}",
+	orm: "org.springframework:spring-orm:${springVersion}",
+	oxm: "org.springframework:spring-oxm:${springVersion}",
+	test: "org.springframework:spring-test:${springVersion}",
+	tx: "org.springframework:spring-tx:${springVersion}",
+	web: "org.springframework:spring-web:${springVersion}",
+	webmvc: "org.springframework:spring-webmvc:${springVersion}"
+]
+
+ext.libs.springsecurity = [
+	config: "org.springframework.security:spring-security-config:${springSecurityVersion}",
+	web: "org.springframework.security:spring-security-web:${springSecurityVersion}"
+]

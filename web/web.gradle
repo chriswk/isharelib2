@@ -1,0 +1,5 @@
+dependencies {
+	compile libs.spring.core
+	compile libs.spring.web
+	compile libs.spring.webmvc
+}

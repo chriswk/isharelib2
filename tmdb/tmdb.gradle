@@ -1,0 +1,7 @@
+dependencies {
+    compile libs.spring.core
+    compile libs.spring.context
+    compile ":isharelib2-data"
+    compile libs.themoviedb
+    testCompile libs.spring.test
+}

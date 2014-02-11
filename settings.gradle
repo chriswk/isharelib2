@@ -1,5 +1,6 @@
 def String[] modules = [
 	"data",
+    "tmdb",
 	"web"
 ]
 

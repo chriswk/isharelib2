@@ -14,15 +14,19 @@ allprojects {
 		mavenLocal()
 		maven {
 			name "springsource release"
-			url "http://repo.springsource.org/libs-release"
+			url "http://repo.spring.io/release"
+		}
+		maven {
+			name "spring milestone"
+			url "http://repo.spring.io/milestone"
 		}
 		maven {
 			name "springsource snapshot"
-			url "http://repo.springsource.org/libs-snapshot"
+			url "http://repo.spring.io/snapshot"
 		}
 		maven {
 			name "neo4j release"
-			url "http://m2.neo4j.org"
+			url "http://m2.neo4j.org/releases"
 		}
 		maven {
 			name "neo4j snapshots"
@@ -35,11 +39,14 @@ allprojects {
 	}
 
 	dependencies {
-		libs.logbackLogging
+		compile libs.logging.log4j2.api
+		compile libs.logging.log4j2.core
+		compile libs.logging.log4j2.jcl
+		testCompile libs.junit
 	}
 }
 
-configure(subprojects) {subproject -> 
+configure(subprojects) { subproject -> 
 	apply from: "${rootProject.gradleDir}/publish-maven.gradle"
 	apply from: "${rootProject.gradleDir}/exclusions.gradle"
 	jar {
@@ -69,6 +76,11 @@ configure(subprojects) {subproject ->
 		from sourceSets.test.allJava
 	}
 
+	task javadocJar(type: Jar) {
+        classifier = 'javadoc'
+        from javadoc
+    }
+
 	artifacts {
 		archives sourcesJar
 		archives javadocJar
@@ -81,6 +93,6 @@ configure(subprojects) {subproject ->
 	}
 }
 
-task wrapper(type: Wrapper, description: "Builds wrapper for ${gradle.version}") {
-	gradleVersion = "${gradle.version}"
+task wrapper(type: Wrapper, description: "Builds wrapper for ${gradleVersion}") {
+	gradleVersion = "${gradleVersion}"
 }

@@ -18,3 +18,57 @@ ext.libs.springsecurity = [
 	config: "org.springframework.security:spring-security-config:${springSecurityVersion}",
 	web: "org.springframework.security:spring-security-web:${springSecurityVersion}"
 ]
+
+ext.libs.spring.data = [
+	neo4j: [
+		core: "org.springframework.data:spring-data-neo4j:${springDataVersion}",
+        rest: "org.springframework.data:spring-data-neo4j-rest:${springDataVersion}"
+	]
+]
+
+ext.libs.junit = "junit:junit:${junitVersion}"
+
+//logging
+ext.libs.logging = [
+        slf4j: [
+                api: "org.slf4j:slf4j-api:$slf4jVersion",
+                log4j12: "org.slf4j:slf4j-slf4j-log4j12:$slf4jVersion",
+        ],
+        logback: [
+                core: "ch.qos.logback:logback-core:$logbackVersion",
+                classic: "ch.qos.logback:logback-classic:$logbackVersion"
+        ],
+        log4j2: [
+        		api: "org.apache.logging.log4j:log4j-api:${log4j2Version}",
+        		core: "org.apache.logging.log4j:log4j-core:${log4j2Version}",
+        		jcl: "org.apache.logging.log4j:log4j-jcl:${log4j2Version}",
+        		slf4j: [
+        			bridge: "org.apache.logging.log4j:log4j-slf4j-impl:${log4j2Version}"
+        		]
+        ]
+]
+
+ext.libs.databases = [
+        neo4j: [
+                kernel: "org.neo4j:neo4j-kernel:${neo4JVersion}",
+                cypher: "org.neo4j:neo4j-cypher:${neo4JVersion}",
+                restgraph: "org.neo4j:neo4j-rest-graphdb:${neo4JVersion}",
+                cypherdsl: "org.neo4j:neo4j-cypher-dsl:2.0.0",
+                udc: "org.neo4j:neo4j-udc:${neo4JVersion}"
+        ]
+]
+
+ext.libs.google = [
+        guava: "com.google.guava:guava:$guavaVersion"
+]
+ext.libs.jetty = [
+        server: "org.eclipse.jetty:jetty-server:${jettyVersion}",
+        webapp: "org.eclipse.jetty:jetty-webapp:${jettyVersion}",
+        servlet: "org.eclipse.jetty:jetty-servlet:${jettyVersion}",
+        util: "org.eclipse.jetty:jetty-util:${jettyVersion}"
+]
+
+ext.libs.themoviedb = "com.omertron:themoviedbapi:$tmdbApiVersion"
+ext.libs.javax = [
+	validation: "javax.validation:validation-api:${validationVersion}"
+]

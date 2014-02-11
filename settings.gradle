@@ -7,6 +7,6 @@ include modules
 
 modules.each { name ->
 	def p = findProject(":${name}")
-	p.name = "isharelib-${name}"
+	p.name = "isharelib2-${name}"
 	p.buildFileName = "${name}.gradle"
 }

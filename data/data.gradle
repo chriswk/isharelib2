@@ -1,3 +1,13 @@
 dependencies {
 	compile libs.spring.core
+	compile libs.spring.context
+	compile libs.spring.tx
+    compile libs.databases.neo4j.cypherdsl
+    compile libs.databases.neo4j.kernel
+    compile libs.databases.neo4j.cypher
+    compile libs.spring.data.neo4j.core
+    compile libs.springsecurity.config
+	compile libs.javax.validation
+    testCompile libs.spring.test
+	testCompile libs.junit
 }

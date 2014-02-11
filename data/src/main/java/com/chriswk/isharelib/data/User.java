@@ -10,6 +10,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import java.util.Collection;
 import java.util.Set;
 
+@NodeEntity
 public class User {
     @GraphId
     Long nodeId;

@@ -26,3 +26,6 @@ log
 .project
 .settings
 .nb-gradle-properties
+
+# Test files #
+testDataDir

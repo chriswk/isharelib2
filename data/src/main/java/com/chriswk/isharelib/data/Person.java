@@ -6,6 +6,7 @@ import org.springframework.data.neo4j.support.index.IndexType;
 import java.time.LocalDate;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @NodeEntity
@@ -34,6 +35,9 @@ public class Person {
 
     @RelatedToVia
     Collection<Role> roles;
+    private List<String> aka;
+    private LocalDate deathDay;
+    private String imdbId;
 
     public Person(Long tmdbId, String name) {
         this.tmdbId = tmdbId;
@@ -146,5 +150,29 @@ public class Person {
     @Override
     public int hashCode() {
         return nodeId != null ? nodeId.hashCode() : super.hashCode();
+    }
+
+    public void setAka(List<String> aka) {
+        this.aka = aka;
+    }
+
+    public List<String> getAka() {
+        return aka;
+    }
+
+    public void setDeathDay(LocalDate deathDay) {
+        this.deathDay = deathDay;
+    }
+
+    public LocalDate getDeathDay() {
+        return deathDay;
+    }
+
+    public void setImdbId(String imdbId) {
+        this.imdbId = imdbId;
+    }
+
+    public String getImdbId() {
+        return imdbId;
     }
 }

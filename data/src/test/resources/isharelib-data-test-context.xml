@@ -11,8 +11,11 @@ http://www.springframework.org/schema/data/neo4j http://www.springframework.org/
     <context:annotation-config/>
     <context:spring-configured/>
     <context:component-scan base-package="com.chriswk.isharelib"/>
-
+    <context:property-placeholder />
     <neo4j:config storeDirectory="testDataDir" />
     <neo4j:repositories base-package="com.chriswk.isharelib.repository"/>
 
+    <bean id="movieDbApi" class="com.omertron.themoviedbapi.TheMovieDbApi">
+        <constructor-arg name="apiKey" value="${TMDB_API_KEY}" />
+    </bean>
 </beans>

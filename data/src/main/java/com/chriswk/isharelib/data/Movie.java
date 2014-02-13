@@ -252,5 +252,10 @@ public class Movie {
         this.languages.add(language);
     }
 
-    public void addLanguages(List<Language>)
+    public void addLanguages(List<Language> languages) {
+   	 	if (this.languages == null) {
+   	 		this.languages = new HashSet<Language>();
+   	 	}
+		this.languages.addAll(languages);
+    }
 }

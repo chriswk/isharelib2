@@ -29,3 +29,5 @@ log
 
 # Test files #
 testDataDir
+
+neo4jdb

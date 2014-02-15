@@ -14,6 +14,10 @@ allprojects {
                 name "neo4j snapshots"
                 url "http://m2.neo4j.org/snapshots"
             }
+            maven {
+                name "spring milestone"
+                url "http://repo.spring.io/libs-snapshot"
+            }
         }
     }
     ext.gradleDir = "${rootDir}/gradle"

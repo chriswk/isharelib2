@@ -26,6 +26,13 @@ ext.libs.spring.data = [
 	]
 ]
 
+ext.libs.spring.boot = [
+        gradleplugin: "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}",
+        actuator: "org.springframework.boot:spring-boot-actuator:${springBootVersion}",
+        starter: "org.springframework.boot:spring-boot-starter:${springBootVersion}",
+        web: "org.springframework.boot:spring-boot-starter-web:${springBootVersion}",
+        jetty: "org.springframework.boot:spring-boot-starter-jetty:${springBootVersion}"
+]
 ext.libs.junit = "junit:junit:${junitVersion}"
 
 //logging
@@ -50,12 +57,23 @@ ext.libs.logging = [
 
 ext.libs.databases = [
         neo4j: [
-                kernel: "org.neo4j:neo4j-kernel:${neo4JVersion}",
-                cypher: "org.neo4j:neo4j-cypher:${neo4JVersion}",
-                restgraph: "org.neo4j:neo4j-rest-graphdb:${neo4JVersion}",
+                kernel: "org.neo4j:neo4j-kernel:${neo4jVersion}",
+                cypher: "org.neo4j:neo4j-cypher:${neo4jVersion}",
+                restgraph: "org.neo4j:neo4j-rest-graphdb:${neo4jVersion}",
                 cypherdsl: "org.neo4j:neo4j-cypher-dsl:2.0.0",
-                udc: "org.neo4j:neo4j-udc:${neo4JVersion}"
+                udc: "org.neo4j:neo4j-udc:${neo4jVersion}",
+                rest: "org.neo4j:neo4j-rest-graphdb:${neo4jRestVersion}"
         ]
+]
+
+ext.libs.thymeleaf = [
+        core: "org.thymeleaf:thymeleaf:${thymeleafVersion}",
+        spring4: "org.thymeleaf:thymeleaf-spring4:${thymeleafVersion}",
+        layout: "org.thymeleaf:thymeleaf:${thymeleafVersion}",
+        extras: [
+                springsecurity: "org.thymeleaf.extras:thymeleaf-extras-springsecurity3:${thymeleafSpringSecurityVersion}"
+        ],
+        test: "org.thymeleaf:thymeleaf-test:${thymeleafVersion}"
 ]
 
 ext.libs.google = [
@@ -71,4 +89,14 @@ ext.libs.jetty = [
 ext.libs.themoviedb = "com.omertron:themoviedbapi:$tmdbApiVersion"
 ext.libs.javax = [
 	validation: "javax.validation:validation-api:${validationVersion}"
+]
+
+ext.libs.webjars = [
+        bootstrap: "org.webjars:bootstrap:${bootstrapVersion}",
+        jquery: "org.webjars:jquery:${jqueryVersion}",
+        fontawesome: "org.webjars:font-awesome:${fontAwesomeVersion}"
+]
+
+ext.libs.hibernate = [
+        validator: "org.hibernate:hibernate-validator:${hibernateValidationVersion}"
 ]

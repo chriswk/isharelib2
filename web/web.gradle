@@ -1,5 +1,24 @@
+buildscript {
+    dependencies {
+        classpath(libs.spring.boot.gradleplugin)
+    }
+}
+
+apply plugin: "spring-boot"
+
 dependencies {
-	compile libs.spring.core
-	compile libs.spring.web
-	compile libs.spring.webmvc
+    compile project(":isharelib2-data")
+    compile libs.spring.boot.actuator
+	compile(libs.spring.boot.web) {
+        exclude module: "spring-boot-starter-tomcat"
+    }
+    compile libs.spring.boot.jetty
+    compile libs.jetty.server
+    compile libs.hibernate.validator
+    compile libs.thymeleaf.core
+    compile libs.thymeleaf.spring4
+    compile libs.webjars.bootstrap
+    compile libs.webjars.fontawesome
+    compile libs.webjars.jquery
+    testCompile libs.thymeleaf.test
 }

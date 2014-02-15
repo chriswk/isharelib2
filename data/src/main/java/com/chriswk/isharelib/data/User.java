@@ -4,8 +4,6 @@ import org.neo4j.graphdb.Direction;
 import org.neo4j.helpers.collection.IteratorUtil;
 import org.springframework.data.neo4j.annotation.*;
 import org.springframework.data.neo4j.template.Neo4jOperations;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.util.Collection;
 import java.util.Set;
@@ -24,20 +22,14 @@ public class User {
     String name;
     String password;
     String info;
-    private Roles[] roles;
 
     public User() {
     }
 
-    public User(String login, String name, String password, Roles... roles) {
+    public User(String login, String name, String password) {
         this.login = login;
         this.name = name;
         this.password = password;
-        this.roles = roles;
-    }
-
-    public String encode(String password) {
-        return new BCryptPasswordEncoder().encode(password);
     }
 
     @RelatedToVia(type = RATED)
@@ -76,10 +68,6 @@ public class User {
         return friends;
     }
 
-    public Roles[] getRole() {
-        return roles;
-    }
-
 
     public String getLogin() {
         return login;
@@ -96,11 +84,6 @@ public class User {
         this.info = info;
     }
 
-    public void updatePassword(String old, String newPass1, String newPass2) {
-        if (!password.equals(encode(old))) throw new IllegalArgumentException("Existing Password invalid");
-        if (!newPass1.equals(newPass2)) throw new IllegalArgumentException("New Passwords don't match");
-        this.password = encode(newPass1);
-    }
 
     public void setName(String name) {
         this.name = name;
@@ -110,16 +93,6 @@ public class User {
         return other!=null && getFriends().contains(other);
     }
 
-    public enum Roles implements GrantedAuthority {
-        ROLE_USER, ROLE_ADMIN;
-
-        @Override
-        public String getAuthority() {
-            return name();
-        }
-    }
-
-    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;

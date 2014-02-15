@@ -29,9 +29,9 @@ ext.libs.spring.data = [
 ext.libs.spring.boot = [
         gradleplugin: "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}",
         actuator: "org.springframework.boot:spring-boot-actuator:${springBootVersion}",
-        starter: "org.springframework.boot:spring-boot-starter:${springBootVersion}",
         web: "org.springframework.boot:spring-boot-starter-web:${springBootVersion}",
-        jetty: "org.springframework.boot:spring-boot-starter-jetty:${springBootVersion}"
+        jetty: "org.springframework.boot:spring-boot-starter-jetty:${springBootVersion}",
+        springsecurity: "org.springframework.boot:spring-boot-starter-security"
 ]
 ext.libs.junit = "junit:junit:${junitVersion}"
 

@@ -12,8 +12,7 @@ dependencies {
     compile libs.databases.neo4j.kernel
     compile libs.databases.neo4j.cypher
     compile libs.spring.data.neo4j.core
-    compile libs.springsecurity.config
-	compile libs.javax.validation
+    compile libs.javax.validation
     compile libs.themoviedb
     testCompile libs.spring.test
 	testCompile libs.junit

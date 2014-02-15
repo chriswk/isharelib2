@@ -10,6 +10,6 @@ public class WelcomeController {
     @RequestMapping("/")
     public String welcome(ModelMap modelMap) {
         modelMap.put("welcome", "Hello world");
-        return "welcome";
+        return "/welcome";
     }
 }

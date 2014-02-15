@@ -1,16 +1,4 @@
 buildscript {
-    repositories {
-        mavenLocal()
-        mavenCentral()
-        maven {
-            name "neo4j release"
-            url "http://m2.neo4j.org/releases"
-        }
-        maven {
-            name "neo4j snapshots"
-            url "http://m2.neo4j.org/snapshots"
-        }
-    }
     dependencies {
         classpath "com.chriswk.gradle:gradle-dependency-graph-plugin:0.2"
     }

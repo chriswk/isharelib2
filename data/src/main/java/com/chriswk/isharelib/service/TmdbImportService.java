@@ -12,6 +12,7 @@ import com.omertron.themoviedbapi.model.MovieDb;
 import com.omertron.themoviedbapi.model.PersonCredit;
 import com.omertron.themoviedbapi.model.PersonType;
 import com.omertron.themoviedbapi.results.TmdbResultsList;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
@@ -137,11 +139,21 @@ public class TmdbImportService {
     private void transformFromTmdbPerson(Person person, com.omertron.themoviedbapi.model.Person personInfo) {
         person.setAka(personInfo.getAka());
         person.setBiography(personInfo.getBiography());
-        person.setBirthday(LocalDate.parse(personInfo.getBirthday()));
+        try {
+
+            if (StringUtils.isNotEmpty(personInfo.getBirthday())) {
+                person.setBirthday(LocalDate.parse(personInfo.getBirthday()));
+            }
+            if (StringUtils.isNotEmpty(personInfo.getDeathday())) {
+                person.setDeathDay(LocalDate.parse(personInfo.getDeathday()));
+            }
+        } catch (DateTimeParseException dt) {
+            LOGGER.error("exception while parsing {}", personInfo.getBirthday(), dt);
+        }
         person.setBirthplace(personInfo.getBirthplace());
         person.setName(personInfo.getName());
         person.setProfileImageUrl(personInfo.getProfilePath());
-        person.setDeathDay(LocalDate.parse(personInfo.getDeathday()));
+
         person.setImdbId(personInfo.getImdbId());
     }
 

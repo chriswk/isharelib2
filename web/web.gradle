@@ -7,9 +7,7 @@ buildscript {
 apply plugin: "spring-boot"
 
 dependencies {
-    compile project(":isharelib2-data")
     compile libs.spring.boot.web
-    compile libs.spring.boot.actuator
     compile libs.hibernate.validator
     compile libs.thymeleaf.core
     compile libs.thymeleaf.spring4

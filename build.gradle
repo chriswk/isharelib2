@@ -55,10 +55,6 @@ allprojects {
 		}
 	}
 
-	tasks.withType(Compile) {
-		options.encoding = 'UTF-8'
-	}
-
 	dependencies {
 		compile libs.logging.log4j2.api
 		compile libs.logging.log4j2.core

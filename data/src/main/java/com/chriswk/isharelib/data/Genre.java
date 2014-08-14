@@ -14,7 +14,6 @@ public class Genre {
     @GraphId
     Long id;
 
-    @Indexed(unique = true, indexName = "genres")
     String name;
 
     @RelatedTo(direction = INCOMING, type="GENRE")

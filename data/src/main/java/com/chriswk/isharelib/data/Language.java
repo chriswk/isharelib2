@@ -8,11 +8,9 @@ import org.springframework.data.neo4j.annotation.NodeEntity;
 public class Language {
     @GraphId
     Long id;
-
-    @Indexed(unique = true, indexName = "languages")
+	
     String isocode;
 
-    @Indexed()
     String name;
 
     public Language() {
